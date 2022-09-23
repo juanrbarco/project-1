@@ -152,7 +152,7 @@ void Lexer::Run(std::string& input) {
 void Lexer::PrintTokens() {
     for (long unsigned int i = 0; i < tokens.size(); i++) {
 
-        std::cout << "(" <<tokens.at(i)->tokenTypeToString(tokens.at(i)->getTokenType()) << ", \"" << tokens.at(i)->getActualValue()
+        std::cout << "(" <<tokens.at(i)->tokenTypeToString(tokens.at(i)->getTokenType()) << ",\"" << tokens.at(i)->getActualValue()
         << "\"," << tokens.at(i)->getLineNumber() <<")" << std::endl;
     }
     std::cout << "Total tokens = " << tokens.size();
