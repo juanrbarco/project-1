@@ -75,3 +75,7 @@
 390	525	6856669415713333	project_1.exe	fac1acf88e7aeee4
 3	196	6856674587341077	CMakeFiles/project_1.dir/Token.cpp.obj	d28efbae3a0c5fc8
 196	323	6856674588571351	project_1.exe	fac1acf88e7aeee4
+3	195	6856678726074550	CMakeFiles/project_1.dir/Token.cpp.obj	d28efbae3a0c5fc8
+196	333	6856678727424855	project_1.exe	fac1acf88e7aeee4
+3	373	6856683624446104	CMakeFiles/project_1.dir/Lexer.cpp.obj	af67fa73d0821e79
+374	499	6856683625676384	project_1.exe	fac1acf88e7aeee4

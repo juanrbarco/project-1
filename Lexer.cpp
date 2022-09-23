@@ -33,7 +33,7 @@ Lexer::~Lexer() {
     automata.clear();
 
     for (long unsigned int i = 0; i <tokens.size(); i++) { //check correctness
-        delete &tokens.at(i);
+        delete tokens.at(i);
     }
     tokens.clear();
 }
