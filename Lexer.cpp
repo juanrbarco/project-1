@@ -32,7 +32,7 @@ Lexer::~Lexer() {
     }
     automata.clear();
 
-    for (int i = 0; i <tokens.size(); i++) { //check correctness
+    for (long unsigned int i = 0; i <tokens.size(); i++) { //check correctness
         delete &tokens.at(i);
     }
     tokens.clear();
@@ -83,7 +83,7 @@ void Lexer::Run(std::string& input) {
             break;
         }
 
-        for (int i = 0; i < automata.size(); i++) {
+        for (long unsigned int i = 0; i < automata.size(); i++) {
            inputRead = automata.at(i)->Start(input);
            if (inputRead > maxRead) {
                maxRead = inputRead;
@@ -151,7 +151,7 @@ void Lexer::Run(std::string& input) {
 
 void Lexer::PrintTokens() {
     //std::cout << "these are my tokens" << std::endl;
-    for (int i = 0; i < tokens.size(); i++) {
+    for (long unsigned int i = 0; i < tokens.size(); i++) {
 
         std::cout << "(" <<tokens.at(i)->tokenTypeToString(tokens.at(i)->getTokenType()) << ", \"" << tokens.at(i)->getActualValue()
         << "\"," << tokens.at(i)->getLineNumber() << ")" << std::endl;
