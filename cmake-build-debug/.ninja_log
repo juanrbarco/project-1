@@ -84,3 +84,5 @@
 381	551	6856689106026640	project_1.exe	fac1acf88e7aeee4
 3	196	6856689388351725	CMakeFiles/project_1.dir/StringAutomaton.cpp.obj	1892e828da709182
 197	323	6856689389582005	project_1.exe	fac1acf88e7aeee4
+4	367	6856690868553134	CMakeFiles/project_1.dir/Lexer.cpp.obj	af67fa73d0821e79
+367	493	6856690869783400	project_1.exe	fac1acf88e7aeee4

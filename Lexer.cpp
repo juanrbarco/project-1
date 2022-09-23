@@ -24,7 +24,7 @@ Lexer::Lexer() {
     CreateAutomata();
 }
 
-Lexer::~Lexer() {
+Lexer::~Lexer() {/*
     // TODO: need to clean up the memory in `automata` and `tokens`
 
     for (long unsigned int i = 0; i < automata.size(); i++) { //check correctness
@@ -36,7 +36,7 @@ Lexer::~Lexer() {
         delete &tokens.at(i);
     }
     tokens.clear();
-}
+*/}
 
 void Lexer::CreateAutomata() {
     automata.push_back(new CommaAutomaton());
