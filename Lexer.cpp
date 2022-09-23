@@ -1,6 +1,24 @@
+#include <iostream>
 #include "Lexer.h"
 #include "ColonAutomaton.h"
 #include "ColonDashAutomaton.h"
+#include "CommaAutomaton.h"
+#include "PeriodAutomaton.h"
+#include "QMarkAutomaton.h"
+#include "LeftParenAutomaton.h"
+#include"RightParenAutomaton.h"
+#include "MultiplyAutomaton.h"
+#include "AddAutomaton.h"
+#include "SchemesAutomaton.h"
+#include "FactsAutomaton.h"
+#include "RulesAutomaton.h"
+#include "QueriesAutomaton.h"
+#include "IDAutomaton.h"
+#include "StringAutomaton.h"
+#include "CommentAutomaton.h"
+#include "EOFAutomaton.h"
+
+
 
 Lexer::Lexer() {
     CreateAutomata();
@@ -8,20 +26,95 @@ Lexer::Lexer() {
 
 Lexer::~Lexer() {
     // TODO: need to clean up the memory in `automata` and `tokens`
+
+    for (int i = 0; i < automata.size(); i++) { //check correctness
+        delete &automata.at(i);
+    }
+    automata.clear();
+
+    for (int i = 0; i <tokens.size(); i++) { //check correctness
+        delete &tokens.at(i);
+    }
+    tokens.clear();
 }
 
 void Lexer::CreateAutomata() {
+    automata.push_back(new CommaAutomaton());
+    automata.push_back(new PeriodAutomaton());
+    automata.push_back(new QMarkAutomaton());
+    automata.push_back(new LeftParenAutomaton());
+    automata.push_back(new RightParenAutomaton());
     automata.push_back(new ColonAutomaton());
     automata.push_back(new ColonDashAutomaton());
+    automata.push_back(new MultiplyAutomaton());
+    automata.push_back(new AddAutomaton());
+    automata.push_back(new SchemesAutomaton());
+    automata.push_back(new FactsAutomaton());
+    automata.push_back(new RulesAutomaton());
+    automata.push_back(new QueriesAutomaton());
+    automata.push_back(new IDAutomaton());
+    automata.push_back(new StringAutomaton());
+    automata.push_back(new CommentAutomaton());
+
+
     // TODO: Add the other needed automata here
 }
 
 void Lexer::Run(std::string& input) {
+    lineNumber = 1;
+    bool isEOF = false;
+    while (input.size() > 0) {
+        maxRead = 0;
+        maxAutomaton = automata.at(0);
+
+        while (std::isspace(input.at(0))) {
+            if (input.at(0)=='\n') {
+                lineNumber++;
+            }
+            input = input.substr(1, input.size());
+
+            if (input.size() == 0) {
+                isEOF = true;
+                break;
+            }
+        }
+
+        if (isEOF) {
+            break;
+        }
+
+        for (int i = 0; i < automata.size(); i++) {
+           inputRead = automata.at(i)->Start(input);
+           if (inputRead > maxRead) {
+               maxRead = inputRead;
+               maxAutomaton = automata.at(i);
+           }
+        }
+
+        if (maxRead > 0) {
+           newToken = maxAutomaton->CreateToken(input.substr(0, maxRead), lineNumber);
+           lineNumber += maxAutomaton->NewLinesRead();
+           tokens.push_back(newToken);
+        }
+
+        else {
+            maxRead = 1;
+             Token* undefinedToken = new Token(TokenType::UNDEFINED, input.substr(0, maxRead), lineNumber);
+             tokens.push_back(undefinedToken);
+        }
+
+        input = input.substr(maxRead, input.size());
+    }
+    Token* newToken = new Token(TokenType::EOF_TYPE,"",lineNumber);
+    tokens.push_back(newToken);
+
+}
     // TODO: convert this pseudo-code with the algorithm into actual C++ code
     /*
     set lineNumber to 1
     // While there are more characters to tokenize
     loop while input.size() > 0 {
+
         set maxRead to 0
         set maxAutomaton to the first automaton in automata
 
@@ -55,4 +148,17 @@ void Lexer::Run(std::string& input) {
     }
     add end of file token to all tokens
     */
+
+void Lexer::PrintTokens() {
+    std::cout << "these are my tokens" << std::endl;
+    for (int i = 0; i < tokens.size(); i++) {
+
+        std::cout << "(" <<tokens.at(i)->tokenTypeToString(tokens.at(i)->getTokenType()) << ", \"" << tokens.at(i)->getActualValue()
+        << "\"," << tokens.at(i)->getLineNumber() << ")" << std::endl;
+
+       /* std::cout << "we are in: " << i << " " <<tokens.at(i)->getLineNumber() << std::endl;
+        std::cout <<tokens.at(i)->tokenTypeToString(tokens.at(i)->getTokenType()) << std::endl;
+        std::cout <<tokens.at(i)->getActualValue() << std:: endl; */
+    }
+    std::cout << "Total tokens = " << tokens.size() << std::endl;
 }
