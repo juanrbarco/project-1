@@ -160,5 +160,5 @@ void Lexer::PrintTokens() {
         std::cout <<tokens.at(i)->tokenTypeToString(tokens.at(i)->getTokenType()) << std::endl;
         std::cout <<tokens.at(i)->getActualValue() << std:: endl; */
     }
-    std::cout << "Total tokens = " << tokens.size() << std::endl << std::endl;
+    std::cout << "Total tokens = " << tokens.size();
 }
