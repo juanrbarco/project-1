@@ -150,7 +150,7 @@ void Lexer::Run(std::string& input) {
     */
 
 void Lexer::PrintTokens() {
-    std::cout << "these are my tokens" << std::endl;
+    //std::cout << "these are my tokens" << std::endl;
     for (int i = 0; i < tokens.size(); i++) {
 
         std::cout << "(" <<tokens.at(i)->tokenTypeToString(tokens.at(i)->getTokenType()) << ", \"" << tokens.at(i)->getActualValue()
@@ -160,5 +160,5 @@ void Lexer::PrintTokens() {
         std::cout <<tokens.at(i)->tokenTypeToString(tokens.at(i)->getTokenType()) << std::endl;
         std::cout <<tokens.at(i)->getActualValue() << std:: endl; */
     }
-    std::cout << "Total tokens = " << tokens.size() << std::endl;
+    std::cout << "Total tokens = " << tokens.size() << std::endl << std::endl;
 }

@@ -11,11 +11,11 @@ int main(int argc, char** argv) {
     std::ifstream input(fileName);
 
 
-    if (input.is_open()) {
+    /*if (input.is_open()) {
         std::cout << "it is open!" << std::endl; //check if file is open
     }
     std::cout << fileName << argc << std::endl; //check if it's the right file
-
+*/
 
 
     std::string fileStr;
@@ -34,7 +34,7 @@ int main(int argc, char** argv) {
 
     lexer->Run(fileStr);
 
-    std::cout << fileStr << std::endl; //make sure file is being read properly
+    //std::cout << fileStr << std::endl; //make sure file is being read properly
 
     lexer->PrintTokens();
 
