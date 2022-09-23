@@ -16,7 +16,7 @@ void CommentAutomaton::S0(const std::string& input) {
 }
 
 void CommentAutomaton::S1(const std::string& input) {
-    if ((index==static_cast<int>(input.size())) || (input[index]=='\n')) {
+    if ((index>=static_cast<int>(input.size())) || (input[index]=='\n')) {
     }
 
     else if (input[index]=='|') {
@@ -33,7 +33,7 @@ void CommentAutomaton::S1(const std::string& input) {
 }
 
 void CommentAutomaton::S2(const std::string& input) {
-    if ((index==static_cast<int>(input.size())) || (input[index]=='\n')) {
+    if ((index>=static_cast<int>(input.size())) || (input[index]=='\n')) {
     }
     else {
         inputRead++;
@@ -43,7 +43,7 @@ void CommentAutomaton::S2(const std::string& input) {
 }
 
 void CommentAutomaton::S3(const std::string& input) {
-    if (index==static_cast<int>(input.size())) {
+    if (index>=static_cast<int>(input.size())) {
         type = TokenType::UNDEFINED;
     }
 
@@ -68,7 +68,7 @@ void CommentAutomaton::S3(const std::string& input) {
 }
 
 void CommentAutomaton::S4(const std::string& input) {
-    if (index == static_cast<int>(input.size())) {
+    if (index >= static_cast<int>(input.size())) {
         type = TokenType::UNDEFINED;
     }
 

@@ -79,3 +79,8 @@
 196	333	6856678727424855	project_1.exe	fac1acf88e7aeee4
 3	373	6856683624446104	CMakeFiles/project_1.dir/Lexer.cpp.obj	af67fa73d0821e79
 374	499	6856683625676384	project_1.exe	fac1acf88e7aeee4
+6	210	6856689102645874	CMakeFiles/project_1.dir/CommentAutomaton.cpp.obj	2083bd9e59a55c71
+3	381	6856689104356252	CMakeFiles/project_1.dir/Lexer.cpp.obj	af67fa73d0821e79
+381	551	6856689106026640	project_1.exe	fac1acf88e7aeee4
+3	196	6856689388351725	CMakeFiles/project_1.dir/StringAutomaton.cpp.obj	1892e828da709182
+197	323	6856689389582005	project_1.exe	fac1acf88e7aeee4
