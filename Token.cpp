@@ -65,5 +65,4 @@ std::string Token::tokenTypeToString(const TokenType type) {
             return "EOF";
             break;
     }
-    return "";
 }

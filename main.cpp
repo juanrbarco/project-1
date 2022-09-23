@@ -10,21 +10,7 @@ int main(int argc, char** argv) {
     std::string fileName = argv[1];
     std::ifstream input(fileName);
 
-
-    /*if (input.is_open()) {
-        std::cout << "it is open!" << std::endl; //check if file is open
-    }
-    std::cout << fileName << argc << std::endl; //check if it's the right file
-*/
-
-
     std::string fileStr;
-//    char c = '\0';
-//    while (EOF != c) {
-//        c = input.get();
-//        fileStr.push_back(c);
-//    }
-//     std::cout << fileStr;
 
 
     std::istreambuf_iterator<char> inputIt(input), emptyInputIt;
@@ -33,8 +19,6 @@ int main(int argc, char** argv) {
      copy(inputIt, emptyInputIt, stringInsert);
 
     lexer->Run(fileStr);
-
-    //std::cout << fileStr << std::endl; //make sure file is being read properly
 
     lexer->PrintTokens();
 
